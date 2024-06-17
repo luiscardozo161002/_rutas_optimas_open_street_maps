@@ -209,8 +209,8 @@
                     let costoDiesel = litrosDiesel * precios.diesel;
 
                     document.getElementById('distancia').innerHTML = `Distancia: ${distancia.toFixed(2)} km`;
-                    document.getElementById('gasolina').innerHTML = `Consumo de gasolina: ${litrosRegular.toFixed(2)} litros (Promedio)`;
-                    document.getElementById('costo').innerHTML = `Costo Total: $${costoRegular.toFixed(2)} MXN (Promedio)`;
+                    document.getElementById('gasolina').innerHTML = `Consumo de gasolina: ${litrosRegular.toFixed(2)} litros`;
+                    document.getElementById('costo').innerHTML = `Costo Total: $${costoRegular.toFixed(2)} MXN`;
                 }).addTo(mapa);
 
                 mapa.fitBounds(L.latLngBounds(puntosIntermedios));
