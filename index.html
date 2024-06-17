@@ -65,7 +65,7 @@
     <div id="entradas">
         <div class="grupo-entrada">
             <input type="text" class="entrada-ubicacion form-control" placeholder="Ingrese el nombre del sitio a seleccionar">
-            <button class="btn btn-primary" onclick="agregarRuta()">Agregar Ruta</button>
+            <button class="btn btn-primary" onclick="agregarRuta()">Agregar</button>
         </div>
         <div class="grupo-entrada">
             <button class="btn btn-success" onclick="activarSeleccionMapa()">Seleccionar sitio desde el mapa</button>
@@ -91,7 +91,6 @@
         </div>
     </div>    
 
-
     <div class="modal fade" id="modalMapaNula" tabindex="-1" aria-labelledby="modalMapaLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -116,9 +115,11 @@
         <div id="costo"></div>
     </div>
 
-    <di id="listaPuntos" class="d-none flex-row pt-2 bg-light">
-        <p>Coordenadas</p>
-        <ol id="ordenPuntos"></ol>
+    <!--Controla las coordenadas de los puntos que se seleccionaron en el mapa-->
+    <div id="listaPuntos" class="flex-row bg-light flex-wrap" style="max-height: 50px; overflow-y: auto;">
+        <ul class="ps-1 d-flex flex-wrap" style="list-style-type: none;">
+            <li id="ordenPuntos" class="d-flex flex-wrap" style="tex-decoration: none;"></li>
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -258,15 +259,18 @@
         });
 
         function actualizarListaPuntos() {
+            let i = 0;
             let lista = document.getElementById('ordenPuntos');
             lista.innerHTML = ''; // Limpiar la lista
-
+        
             puntosIntermedios.forEach((punto, index) => {
                 let item = document.createElement('li');
-                item.textContent = `Sitio: ${punto.lat.toFixed(5)}, ${punto.lng.toFixed(5)}`;
+                i++; // Incrementar el contador en cada iteración
+                item.textContent = `Sitio ${i}: ${punto.lat.toFixed(4)}, ${punto.lng.toFixed(4)} | `;
                 lista.appendChild(item);
             });
         }
+        
     </script>
 </body>
 </html>
